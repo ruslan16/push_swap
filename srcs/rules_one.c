@@ -5,7 +5,6 @@ void	ft_swapab(t_dupstruct *f, char name_stac, int button)
 {
 	int tmp;
 
-	tmp = 0;
 	if (name_stac == 'a')
 	{
 		if (f->len_stac_a > 1)

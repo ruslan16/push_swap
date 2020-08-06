@@ -1,10 +1,9 @@
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-void 	work_with_fivestac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
+void 	work_with_tenstac(t_dupstruct *f, int i, int j, int size_stacs)
 {
 	int count;
-	int i;
 
 	count = 0;
 	while (count++ != size_stacs)
@@ -13,26 +12,24 @@ void 	work_with_fivestac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
 		i = 0;
 		while (i < (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[i], f->stac_five, size_stacs))
+			if (ft_intchr(f->stac_a[i], f->stac_ten, size_stacs))
 				break;
 			i++;
 		}
 		while (j >= (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[j], f->stac_five, size_stacs))
+			if (ft_intchr(f->stac_a[j], f->stac_ten, size_stacs))
 				break;
 			j--;
 		}
 		find_element(f, i, f->len_stac_a - j);
 	}
-	if (count_stacs > 5)
-		work_with_sixstac(f, 0, 0, size_stacs);
+	work_with_elevenstac(f, 0, 0, f->len_stac_a);
 }
 
-void 	work_with_fourstac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
+void 	work_with_ninestac(t_dupstruct *f, int i, int j, int size_stacs)
 {
 	int count;
-	int i;
 
 	count = 0;
 	while (count++ != size_stacs)
@@ -41,26 +38,24 @@ void 	work_with_fourstac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
 		i = 0;
 		while (i < (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[i], f->stac_four, size_stacs))
+			if (ft_intchr(f->stac_a[i], f->stac_nine, size_stacs))
 				break;
 			i++;
 		}
 		while (j >= (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[j], f->stac_four, size_stacs))
+			if (ft_intchr(f->stac_a[j], f->stac_nine, size_stacs))
 				break;
 			j--;
 		}
 		find_element(f, i, f->len_stac_a - j);
 	}
-	(count_stacs == 5) ? work_with_fivestac(f, count_stacs, 0, f->len_stac_a)
-	: work_with_fivestac(f, count_stacs, 0, size_stacs);
+	work_with_tenstac(f, 0, 0, size_stacs);
 }
 
-void 	work_with_threestac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
+void 	work_with_eightstac(t_dupstruct *f, int i, int j, int size_stacs)
 {
 	int count;
-	int i;
 
 	count = 0;
 	while (count++ != size_stacs)
@@ -69,25 +64,24 @@ void 	work_with_threestac(t_dupstruct *f, int count_stacs, int j, int size_stacs
 		i = 0;
 		while (i < (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[i], f->stac_three, size_stacs))
+			if (ft_intchr(f->stac_a[i], f->stac_eight, size_stacs))
 				break;
 			i++;
 		}
 		while (j >= (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[j], f->stac_three, size_stacs))
+			if (ft_intchr(f->stac_a[j], f->stac_eight, size_stacs))
 				break;
 			j--;
 		}
 		find_element(f, i, f->len_stac_a - j);
 	}
-	work_with_fourstac(f, count_stacs, 0, size_stacs);
+	work_with_ninestac(f, 0, 0, size_stacs);
 }
 
-void 	work_with_twostac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
+void 	work_with_sevenstac(t_dupstruct *f, int i, int j, int size_stacs)
 {
 	int count;
-	int i;
 
 	count = 0;
 	while (count++ != size_stacs)
@@ -96,25 +90,24 @@ void 	work_with_twostac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
 		i = 0;
 		while (i < (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[i], f->stac_two, size_stacs))
+			if (ft_intchr(f->stac_a[i], f->stac_seven, size_stacs))
 				break;
 			i++;
 		}
 		while (j >= (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[j], f->stac_two, size_stacs))
+			if (ft_intchr(f->stac_a[j], f->stac_seven, size_stacs))
 				break;
 			j--;
 		}
 		find_element(f, i, f->len_stac_a - j);
 	}
-	work_with_threestac(f, count_stacs, 0, size_stacs);
+	work_with_eightstac(f, 0, 0, size_stacs);
 }
 
-void 	work_with_onestac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
+void 	work_with_sixstac(t_dupstruct *f, int i, int j, int size_stacs)
 {
 	int count;
-	int i;
 
 	count = 0;
 	while (count++ != size_stacs)
@@ -123,17 +116,17 @@ void 	work_with_onestac(t_dupstruct *f, int count_stacs, int j, int size_stacs)
 		i = 0;
 		while (i < (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[i], f->stac_one, size_stacs))
+			if (ft_intchr(f->stac_a[i], f->stac_six, size_stacs))
 				break;
 			i++;
 		}
 		while (j >= (f->len_stac_a / 2))
 		{
-			if (ft_intchr(f->stac_a[j], f->stac_one, size_stacs))
+			if (ft_intchr(f->stac_a[j], f->stac_six, size_stacs))
 				break;
 			j--;
 		}
 		find_element(f, i, f->len_stac_a - j);
 	}
-	work_with_twostac(f, count_stacs, 0, size_stacs);
+	work_with_sevenstac(f, 0, 0, size_stacs);
 }

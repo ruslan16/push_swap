@@ -1,7 +1,7 @@
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-void 	ft_push_to_a(t_dupstruct *f, int index_max, int j)
+void 	ft_push_to_a(t_dupstruct *f, int index_max)
 {
 	while (f->len_stac_b != 0)
 	{
@@ -52,54 +52,21 @@ void 	find_element(t_dupstruct *f, int i, int j)
 	ft_push_b(f);
 }
 
-void 	ft_fill_stac(t_dupstruct *f, int i, int j)
-{
-	while (j++ < (f->len_stac_a / 5))
-	{
-		f->stac_two[j] = f->sorted_stac[i];
-		i++;
-	}
-	j = -1;
-	while (j++ < (f->len_stac_a / 5))
-	{
-		f->stac_three[j] = f->sorted_stac[i -1];
-		i++;
-	}
-	j = -1;
-	while (j++ < (f->len_stac_a / 5))
-	{
-		f->stac_four[j] = f->sorted_stac[i - 2];
-		i++;
-	}
-	j = -1;
-	while (j++ < (f->len_stac_a / 5))
-	{
-		f->stac_five[j] = f->sorted_stac[i - 3];
-		i++;
-	}
-}
-
 void 	ft_sort_onehundred(t_dupstruct *f)
 {
 	int i;
 
+	i = -1;
 	f->sorted_stac = ft_sorted(f->stac_a, f->len_stac_a);
-	i = 0;
 	f->stac_one = ft_memalloc(f->len_stac_a / 5);
 	f->stac_two = ft_memalloc(f->len_stac_a / 5);
 	f->stac_three = ft_memalloc(f->len_stac_a / 5);
 	f->stac_four = ft_memalloc(f->len_stac_a / 5);
 	f->stac_five = ft_memalloc(f->len_stac_a - (f->len_stac_a / 5) * 4);
-	i = -1;
 	while (i++ < (f->len_stac_a / 5))
 		f->stac_one[i] = f->sorted_stac[i];
-	ft_fill_stac(f, i -1, -1);
-	work_with_onestac(f, 0, 0, f->len_stac_a / 5);
-	ft_push_to_a(f, 0, 0);
-	free(f->stac_one);
-	free(f->stac_two);
-	free(f->stac_three);
-	free(f->stac_four);
-	free(f->stac_five);
-	free(f->sorted_stac);
+	ft_fill_stac(f, i -1, -1, 5);
+	work_with_onestac(f, 5, 0, f->len_stac_a / 5);
+	ft_push_to_a(f, 0);
+	ft_clear_stacs(f, 5);
 }

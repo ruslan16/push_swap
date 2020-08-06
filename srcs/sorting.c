@@ -3,7 +3,7 @@
 
 void	ft_sort_two(t_dupstruct *f)
 {
-	if (f->stac_a[0] < f->stac_b[1])
+	if (f->stac_a[0] > f->stac_a[1])
 		ft_swapab(f, 'a' ,0);
 }
 

@@ -51,7 +51,7 @@ int 	pars_two(char *str, t_struct *f, int i)
 	return (1);
 }
 
-int 	parsing(char *str[], t_struct *f)
+int 	parsing(char *str[], t_struct *f, int button)
 {
 	int i;
 
@@ -70,6 +70,9 @@ int 	parsing(char *str[], t_struct *f)
 		ft_printf("Error\n");
 		return (0);
 	}
-	ft_sort(f);
+	if (button == 0)
+		ft_sort(f);
+	else
+		ft_check_sort(f);
 	return (1);
 }

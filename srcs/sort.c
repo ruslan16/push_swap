@@ -9,8 +9,10 @@ void	ft_algo(t_dupstruct *f)
 		ft_sort_three(f->stac_a, f, 'a');
 	else if (f->len_stac_a == 5 || f->len_stac_a == 4)
 		ft_sort_five(f);
-	else if (f->len_stac_a > 5)
+	else if (f->len_stac_a > 5 && f->len_stac_a < 101 && !ft_is_sorted(f->stac_a, f->len_stac_a))
 		ft_sort_onehundred(f);
+	else if (f->len_stac_a > 100 && !ft_is_sorted(f->stac_a, f->len_stac_a))
+		ft_sort_fivehundred(f);
 }
 
 void	ft_sort(t_struct *f)
@@ -21,14 +23,7 @@ void	ft_sort(t_struct *f)
 		return ;
 	bezerostructdup(d, f);
 	ft_algo(d);
-	int i = 0;
-	while (i < d->len_stac_a)
-	{
-		ft_printf("%d ", d->stac_a[i]);
-		i++;
-	}
-	ft_printf("\n");
-//	free(d->stac_a);
-//	free(d->stac_b);
+	free(d->stac_a);
+	free(d->stac_b);
 	free(d);
 }
