@@ -78,13 +78,24 @@ int 	ft_index_highel(int *num, int len)
 int 	ft_is_sorted(int *num, int len)
 {
 	int i;
+	int *dupstac;
+	int *sort;
 
 	i = 0;
+	sort = ft_sorted(num, len);
+	dupstac = ft_memalloc(len);
+	dupstac = ft_intdup(dupstac, num, len);
 	while (i < len)
 	{
-		if (num[i] > num[i + 1] && (i != len - 1))
+		if (sort[i] != dupstac[i])
+		{
+			free(sort);
+			free(dupstac);
 			return (0);
+		}
 		i++;
 	}
+	free(sort);
+	free(dupstac);
 	return (1);
 }

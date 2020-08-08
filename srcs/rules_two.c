@@ -6,16 +6,20 @@ void	ft_reverse_rotate_a(t_dupstruct *f, int button)
 	int tmp;
 	int len;
 
-	tmp = f->stac_a[f->len_stac_a - 1];
-	len = f->len_stac_a - 1;
-	while (len > 0)
+	if (f->len_stac_a != 0)
 	{
-		f->stac_a[len] = f->stac_a[len - 1];
-		len--;
+		tmp = f->stac_a[f->len_stac_a - 1];
+		len = f->len_stac_a - 1;
+		while (len > 0)
+		{
+			f->stac_a[len] = f->stac_a[len - 1];
+			len--;
+		}
+		f->stac_a[0] = tmp;
+		if (button != 1)
+			ft_printf("rra\n");
 	}
-	f->stac_a[0] = tmp;
-	if (button != 1)
-		ft_printf("rra\n");
+	(f->v == 1) ? ft_print_stac(f, "rra", 'n') : ft_printf("");
 }
 
 void	ft_reverse_rotate_b(t_dupstruct *f, int button)
@@ -23,16 +27,20 @@ void	ft_reverse_rotate_b(t_dupstruct *f, int button)
 	int tmp;
 	int len;
 
-	tmp = f->stac_b[f->len_stac_b - 1];
-	len = f->len_stac_b - 1;
-	while (len > 0)
+	if (f->len_stac_b != 0)
 	{
-		f->stac_b[len] = f->stac_b[len - 1];
-		len--;
+		tmp = f->stac_b[f->len_stac_b - 1];
+		len = f->len_stac_b - 1;
+		while (len > 0)
+		{
+			f->stac_b[len] = f->stac_b[len - 1];
+			len--;
+		}
+		f->stac_b[0] = tmp;
+		if (button != 1)
+			ft_printf("rrb\n");
 	}
-	f->stac_b[0] = tmp;
-	if (button != 1)
-		ft_printf("rrb\n");
+	(f->v == 1) ? ft_print_stac(f, "rrb", 'n') : ft_printf("");
 }
 
 void	ft_rotate_a(t_dupstruct *f, int button)
@@ -41,17 +49,21 @@ void	ft_rotate_a(t_dupstruct *f, int button)
 	int i;
 	int len;
 
-	i = 0;
-	tmp = f->stac_a[0];
-	len = f->len_stac_a - 1;
-	while (i < len)
+	if (f->len_stac_a != 0)
 	{
-		f->stac_a[i] = f->stac_a[i + 1];
-		i++;
+		i = 0;
+		tmp = f->stac_a[0];
+		len = f->len_stac_a - 1;
+		while (i < len)
+		{
+			f->stac_a[i] = f->stac_a[i + 1];
+			i++;
+		}
+		f->stac_a[len] = tmp;
+		if (button != 1)
+			ft_printf("ra\n");
 	}
-	f->stac_a[len] = tmp;
-	if (button != 1)
-		ft_printf("ra\n");
+	(f->v == 1) ? ft_print_stac(f, "ra", 'n') : ft_printf("");
 }
 
 void	ft_rotate_b(t_dupstruct *f, int button)
@@ -60,16 +72,20 @@ void	ft_rotate_b(t_dupstruct *f, int button)
 	int i;
 	int len;
 
-	i = 0;
-	tmp = f->stac_b[0];
-	len = f->len_stac_b - 1;
-	while (i < len)
+	if (f->len_stac_b != 0)
 	{
-		f->stac_b[i] = f->stac_b[i + 1];
-		i++;
+		i = 0;
+		tmp = f->stac_b[0];
+		len = f->len_stac_b - 1;
+		while (i < len)
+		{
+			f->stac_b[i] = f->stac_b[i + 1];
+			i++;
+		}
+		f->stac_b[len] = tmp;
+		if (button != 1)
+			ft_printf("rb\n");
 	}
-	f->stac_b[len] = tmp;
-	if (button != 1)
-		ft_printf("rb\n");
+	(f->v == 1) ? ft_print_stac(f, "rb", 'n') : ft_printf("");
 }
 

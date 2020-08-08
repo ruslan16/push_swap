@@ -25,9 +25,10 @@ void	ft_swapab(t_dupstruct *f, char name_stac, int button)
 	}
 	if (button != 1)
 		(name_stac == 'a') ? ft_printf("sa\n") : ft_printf("sb\n");
+	(f->v == 1) ? ft_print_stac(f, "s", name_stac) : ft_printf("");
 }
 
-void	ft_push_a(t_dupstruct *f)
+void	ft_push_a(t_dupstruct *f, int button)
 {
 	int len_a;
 	int len_b;
@@ -35,7 +36,7 @@ void	ft_push_a(t_dupstruct *f)
 
 	len_b = f->len_stac_b - 1;
 	len_a = f->len_stac_a - 1;
-	i = 0;
+	i = -1;
 	if (f->len_stac_b > 0)
 	{
 		while (len_a >= 0)
@@ -45,17 +46,15 @@ void	ft_push_a(t_dupstruct *f)
 		}
 		f->stac_a[0] = f->stac_b[0];
 		f->len_stac_a++;
-		while (i < len_b)
-		{
+		while (i++ < len_b)
 			f->stac_b[i] = f->stac_b[i + 1];
-			i++;
-		}
 		f->len_stac_b--;
-		ft_printf("pa\n");
+		(button == 0) ? ft_printf("pa\n") : ft_printf("");
 	}
+	(f->v == 1) ? ft_print_stac(f, "pa", 'n') : ft_printf("");
 }
 
-void	ft_push_b(t_dupstruct *f)
+void	ft_push_b(t_dupstruct *f, int button)
 {
 	int len_a;
 	int len_b;
@@ -63,7 +62,7 @@ void	ft_push_b(t_dupstruct *f)
 
 	len_b = f->len_stac_b - 1;
 	len_a = f->len_stac_a - 1;
-	i = 0;
+	i = -1;
 	if (f->len_stac_a > 0)
 	{
 		while (len_b >= 0)
@@ -73,12 +72,10 @@ void	ft_push_b(t_dupstruct *f)
 		}
 		f->stac_b[0] = f->stac_a[0];
 		f->len_stac_b++;
-		while (i < len_a)
-		{
+		while (i++ < len_a)
 			f->stac_a[i] = f->stac_a[i + 1];
-			i++;
-		}
 		f->len_stac_a--;
-		ft_printf("pb\n");
+		(button == 0) ? ft_printf("pb\n") : ft_printf("");
 	}
+	(f->v == 1) ? ft_print_stac(f, "pb", 'n') : ft_printf("");
 }

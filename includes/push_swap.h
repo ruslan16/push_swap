@@ -1,6 +1,7 @@
 
 #ifndef PUSH_SWAP_PUSH_SWAP_H
 # define PUSH_SWAP_PUSH_SWAP_H
+# include <unistd.h>
 
 typedef struct	s_struct
 {
@@ -9,15 +10,20 @@ typedef struct	s_struct
 	int			*stac_b;
 	int			len_stac_a;
 	int			len_stac_b;
+	int 		v;
+	int 		c;
+	int 		vb;
 }				t_struct;
 
 typedef struct	s_dupstruct
 {
-	int			*stac_a;
-	int			i;
-	int			*stac_b;
 	int			len_stac_a;
 	int			len_stac_b;
+	int 		c;
+	int			v;
+	int 		vb;
+	int			*stac_a;
+	int			*stac_b;
 	int 		*stac_one;
 	int 		*stac_two;
 	int 		*stac_three;
@@ -35,12 +41,12 @@ typedef struct	s_dupstruct
 int		parsing(char *str[], t_struct *f, int button);
 void	ft_sort(t_struct *f);
 void	bezerostructdup(t_dupstruct *d, t_struct *f);
-void 	ft_check_sort(t_struct *f);
+int 	ft_check_sort(t_dupstruct *f);
 
 void	ft_swapab(t_dupstruct *f, char name_stac, int button);
 void	ft_ss(t_dupstruct *f, int button);
-void	ft_push_a(t_dupstruct *f);
-void	ft_push_b(t_dupstruct *f);
+void	ft_push_a(t_dupstruct *f, int button);
+void	ft_push_b(t_dupstruct *f, int button);
 void	ft_rotate_a(t_dupstruct *f, int button);
 void	ft_rotate_b(t_dupstruct *f, int button);
 void	ft_rotate_ab(t_dupstruct *f, int button);
@@ -51,6 +57,7 @@ void	ft_reverse_rotate_ab(t_dupstruct *f, int button);
 void	ft_sort_two(t_dupstruct *f);
 void 	ft_sort_three(int *stac, t_dupstruct *f, char name_stac);
 void 	ft_sort_three_d(int *stac, t_dupstruct *f, char name_stac);
+void 	ft_sort_four(t_dupstruct *f);
 void 	ft_sort_five(t_dupstruct *f);
 void 	ft_sort_five_d(t_dupstruct *f);
 void 	ft_sort_onehundred(t_dupstruct *f);
@@ -75,5 +82,12 @@ int 	ft_intchr(int num, int *stac, int len_stac);
 int 	*ft_sorted(int *num, int len);
 int 	*ft_intdup(int *num, int *num1, int len);
 void 	ft_clear_stacs(t_dupstruct *f, int count_stacs);
+
+int 	ft_check_command(char *cmd, t_dupstruct *f);
+void 	ft_read_command(t_struct *f);
+int		ft_check_sort(t_dupstruct *f);
+
+int 	ft_check_bonus(char *str, t_struct *f);
+void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac);
 
 #endif //PUSH_SWAP_PUSH_SWAP_H

@@ -22,7 +22,7 @@ void 	ft_push_to_a(t_dupstruct *f, int index_max)
 				index_max--;
 			}
 		}
-		ft_push_a(f);
+		ft_push_a(f, 0);
 	}
 }
 
@@ -49,7 +49,7 @@ void 	find_element(t_dupstruct *f, int i, int j)
 		while (ft_index_lowel(f->stac_b, f->len_stac_b) != 0)
 			ft_rotate_b(f, 0);
 	}
-	ft_push_b(f);
+	ft_push_b(f, 0);
 }
 
 void 	ft_sort_onehundred(t_dupstruct *f)

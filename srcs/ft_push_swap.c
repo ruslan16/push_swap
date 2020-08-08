@@ -6,9 +6,11 @@ void	bezerostructdup(t_dupstruct *d, t_struct *f)
 	d->stac_a = ft_memalloc(f->len_stac_a);
 	d->stac_a = ft_intdup(d->stac_a, f->stac_a, f->len_stac_a);
 	d->stac_b = ft_memalloc(f->len_stac_a);
-	d->i = 0;
 	d->len_stac_a = f->len_stac_a;
 	d->len_stac_b = f->len_stac_b;
+	d->v = f->v;
+	d->c = f->c;
+	d->vb = f->vb;
 }
 
 void	bezerostruct(t_struct *f, int size_stac)
@@ -18,6 +20,9 @@ void	bezerostruct(t_struct *f, int size_stac)
 	f->i = 0;
 	f->len_stac_a = 0;
 	f->len_stac_b = 0;
+	f->v = 0;
+	f->c = 0;
+	f->vb = 0;
 }
 
 int		main(int argc, char *argv[])

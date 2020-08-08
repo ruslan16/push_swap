@@ -1,6 +1,32 @@
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
+int 	ft_check_bonus(char *str, t_struct *f)
+{
+	if (str[0] == '-')
+	{
+		if (str[1] == 'v')
+		{
+			if (str[2] == 'b')
+				f->vb = 1;
+			else
+				f->v = 1;
+		}
+		else
+			return (0);
+	}
+	else
+		return (0);
+	if ((f->v == 1 && str[2] == 'c') || (f->vb == 1 && str[3] == 'c'))
+		f->c = 1;
+	else if ((f->v == 1 && str[2] != '\0') || (f->vb == 1 && str[3] != '\0'))
+		return (0);
+	if ((f->c == 1 && f->v == 1 && str[3] != '\0') ||
+	(f->vb == 1 && f->c == 1 && str[4] != '\0'))
+		return (0);
+	return (1);
+}
+
 int 	if_not_double(t_struct *f)
 {
 	int i;
@@ -58,6 +84,8 @@ int 	parsing(char *str[], t_struct *f, int button)
 	i = 1;
 	while (str[i])
 	{
+		if (i == 1 && ft_check_bonus(str[1], f))
+			i++;
 		if(!pars_two(str[i], f, 0))
 		{
 			ft_printf("Error\n");
@@ -73,6 +101,6 @@ int 	parsing(char *str[], t_struct *f, int button)
 	if (button == 0)
 		ft_sort(f);
 	else
-		ft_check_sort(f);
+		ft_read_command(f);
 	return (1);
 }
