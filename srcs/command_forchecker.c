@@ -17,7 +17,7 @@ int		ft_check_sort(t_dupstruct *f)
 			j = ft_check_command(cmd, f);
 			if (ft_is_sorted(f->stac_a, f->len_stac_a) && j != - 1 && f->len_stac_b == 0)
 			{
-				ft_printf("OK\n");
+				ft_printf("\033[1;32mOK\033[0m\n");
 				return (2);
 			}
 			return ((j == -1) ? -1 : 1);
@@ -43,14 +43,14 @@ void 	ft_read_command(t_struct *f)
 		res = ft_check_sort(d);
 		if (res == -1)
 		{
-			ft_putstr_fd("Error\n", 2);
+			ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
 			break;
 		}
 	}
-	if ((!ft_is_sorted(d->stac_a, d->len_stac_a) && res != -1) || (f->len_stac_b != 0 && res != -1))
-		ft_printf("KO\n");
+	if ((!ft_is_sorted(d->stac_a, d->len_stac_a) && res != -1) || (d->len_stac_b != 0 && res != -1))
+		ft_printf("\033[1;31mKO\033[0m\n");
 	else if (ft_is_sorted(d->stac_a, d->len_stac_a) && res != 2 && res != -1 && d->len_stac_b == 0)
-		ft_printf("OK\n");
+		ft_printf("\033[1;32mOK\033[0m\n");
 	free(d->stac_a);
 	free(d->stac_b);
 	free(d);

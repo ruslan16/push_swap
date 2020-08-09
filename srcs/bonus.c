@@ -27,15 +27,15 @@ void 	ft_print_color(t_dupstruct *f, char *cmd, char stac)
 		ft_printf("\033[1;33sb\033[0m\n");
 	else
 		ft_printf("\033[1;33m%s\033[0m\n", cmd);
-	ft_printf("\033[1;31mSTAC_A	STAC_B\033[0m\n");
+	ft_printf("\033[1;35mSTAC_A	STAC_B\033[0m\n");
 	while (i < f->len_stac_a || j < f->len_stac_b)
 	{
 		(i < f->len_stac_a) ? ft_printf("\033[1;36m%d\033[0m", f->stac_a[i]) : write(1, "", 0);
-		(j < f->len_stac_b) ? ft_printf("	\033[1;36m%d\033[0m\n", f->stac_b[j]) : write(2, "\n", 1);
+		(j < f->len_stac_b) ? ft_printf("	\033[1;36m%d\033[0m\n", f->stac_b[j]) : write(1, "\n", 1);
 		j++;
 		i++;
 	}
-	sleep(1);
+	usleep(200 * 1000);
 }
 
 void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac)
@@ -45,6 +45,11 @@ void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac)
 
 	i = 0;
 	j = 0;
+	if ((f->len_stac_b + f->len_stac_a) > 40)
+	{
+		write_highstac(f, cmd, stac);
+		return ;
+	}
 	if (f->c == 1)
 	{
 		ft_print_color(f, cmd, stac);
@@ -54,9 +59,9 @@ void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac)
 	while (i < f->len_stac_a || j < f->len_stac_b)
 	{
 		(i < f->len_stac_a) ? ft_printf("%d", f->stac_a[i]) : write(1, "", 0);
-		(j < f->len_stac_b) ? ft_printf("	%d\n", f->stac_b[j]) : write(2, "\n", 1);
+		(j < f->len_stac_b) ? ft_printf("	%d\n", f->stac_b[j]) : write(1, "\n", 1);
 		i++;
 		j++;
 	}
-	usleep(650 * 1000);
+	usleep(200 * 1000);
 }

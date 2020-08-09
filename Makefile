@@ -1,22 +1,32 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: etristan <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/09/07 16:32:13 by etristan          #+#    #+#              #
+#    Updated: 2019/12/17 17:39:28 by etristan         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME_P = push_swap
 
 NAME_C = checker
-
-ADDAR = ar rc
-
-RLIB = ranlib
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_W = srcs/bonus.c srcs/command_forchecker.c srcs/dlc_fun_two.c srcs/fill_stac.c \
-        srcs/ft_parsing.c srcs/rules_one.c srcs/sort.c srcs/sorting_five.c \
-        srcs/sorting_onehundred.c srcs/work_with_fivestac.c srcs/check_max.c \
-        srcs/dlc_fun.c srcs/double_rules.c srcs/ft_checker.c srcs/ft_push_swap.c srcs/rules_two.c \
-        srcs/sorting.c srcs/sorting_fivehundred.c srcs/work_with_elevenstac.c
+	srcs/ft_parsing.c srcs/rules_one.c srcs/sort.c srcs/sorting_five.c \
+	srcs/sorting_onehundred.c srcs/work_with_fivestac.c srcs/check_max.c \
+	srcs/dlc_fun.c srcs/double_rules.c srcs/ft_checker.c srcs/ft_push_swap.c srcs/rules_two.c \
+	srcs/sorting.c srcs/sorting_fivehundred.c srcs/work_with_elevenstac.c srcs/bonus_d.c
 
 SRC_NAME = $(notdir $(SRC_W))
+
+#SRC_NAME = $(wildcard *.c)
 
 SRC_PATH = srcs
 
@@ -28,9 +38,9 @@ SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJS = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-CFLAGS += -I includes
+CFLAGS += -I ./
 
-CFLAGS += -I libft/includes
+CFLAGS += -I ./libft/includes
 
 LIBFT = libft
 
@@ -41,7 +51,6 @@ LDFLAGS = -L $(LIBFT)
 ###############################################################################
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-#	CFLAGS += -Wno-unused-but-set-variable
 	NUMPROC := $(shell grep -c ^processor /proc/cpuinfo)
 else ifeq ($(UNAME_S),Darwin)
 	NUMPROC := $(shell sysctl hw.ncpu | awk '{print $$2}')
@@ -54,47 +63,45 @@ fast	:
 	@$(MAKE) -s -j$(NUMPROC)
 
 libft.a	:
-	@echo "$(RED)Making libft...$(EOC)\n"
+	@printf "$(RED)Making libft...$(EOC)\n"
 	@$(MAKE) --no-print-directory -C $(LIBFT) all
 
-$(OBJ_PATH) : libft.a
+$(OBJ_PATH)     : libft.a
 	@mkdir -p $(OBJ_PATH) 2> /dev/null
-	@echo "$(GRN)Compiling with \"$(CFLAGS)\" :$(EOC)\n"
+	@printf "$(GRN)Compiling with \"$(CFLAGS)\" :$(EOC)\n"
 
-$(NAME_P)	: $(OBJS)
-	@echo "$(GRN)%-50s$(EOC)\n" "Compilation done"
-#	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
-	@cp libft/libft.a $(NAME_P)
-	$(ADDAR) $@ $^
-	$(RLIB) $@
-	@echo "$(GRN)%-50s$(EOC)\n" "$(NAME_P) done"
+$(NAME_P)	: $(subst objs/ft_checker.o,,$(OBJS))
+	@printf "$(GRN)%-50s$(EOC)\n" "Compilation done"
+	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
+	@printf "$(GRN)%-50s$(EOC)\n" "$(NAME_P) done"
+
+$(NAME_C)	: $(subst objs/ft_push_swap.o,,$(OBJS))
+	@printf "$(GRN)%-50s$(EOC)\n" "Compilation done"
+	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
+	@printf "$(GRN)%-50s$(EOC)\n" "$(NAME_C) done"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
-	@echo "%-50s\r" "$(CC) $@"
+	@printf "%-50s\r" "$(CC) $@"
 	$(CC) $(CFLAGS) -o $@ -c $<
-
-#so	: all
-#	@echo "$(CC) (...) -shared -o $(NAME:.a=.so)\n"
-#	@$(CC) $(OBJS) -shared -o $(NAME:.a=.so)
 
 clean	:
 	/bin/rm -rf $(OBJ_PATH)
 	@$(MAKE) --no-print-directory -C $(LIBFT) fclean
-	@echo "$(RED)./$(OBJ_PATH), libft cleaned$(EOC)\n"
+	@printf "$(RED)./$(OBJ_PATH), libft cleaned$(EOC)\n"
 
 fclean	:	clean
-	/bin/rm -f $(NAME)
-	@echo "$(RED)$(NAME), libft.a removed$(EOC)\n"
+	/bin/rm -f $(NAME_P) $(NAME_C)
+	@printf "$(RED)$(NAME_P), $(NAME_C), libft.a removed$(EOC)\n"
 
 ref	:
 	/bin/rm -rf $(OBJ_PATH)
-	@echo "$(RED)./$(OBJ_PATH), cleaned$(EOC)\n"
-	@$(MAKE) --no-print-directory -j$(NUMPROC) $(NAME)
+	@printf "$(RED)./$(OBJ_PATH), cleaned$(EOC)\n"
+	@$(MAKE) --no-print-directory -j$(NUMPROC) $(NAME_P) $(NAME_C)
 
 re	:	fclean
-	@$(MAKE) --no-print-directory -j$(NUMPROC) $(NAME)
+	@$(MAKE) --no-print-directory -j$(NUMPROC) $(NAME_P) $(NAME_C)
 
-.PHONY: all fast libft.a ref clean fclean re
+.PHONY: all fast clean fclean re ref libft.a $(NAME_P) $(NAME_C)
 
 GRN =	\033[0;32m
 RED =	\033[0;31m

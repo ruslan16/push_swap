@@ -89,5 +89,6 @@ int		ft_check_sort(t_dupstruct *f);
 
 int 	ft_check_bonus(char *str, t_struct *f);
 void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac);
+void	write_highstac(t_dupstruct *f, char *cmd, char stac);
 
 #endif //PUSH_SWAP_PUSH_SWAP_H
