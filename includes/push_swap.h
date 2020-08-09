@@ -2,6 +2,7 @@
 #ifndef PUSH_SWAP_PUSH_SWAP_H
 # define PUSH_SWAP_PUSH_SWAP_H
 # include <unistd.h>
+# include <time.h>
 
 typedef struct	s_struct
 {
@@ -12,7 +13,6 @@ typedef struct	s_struct
 	int			len_stac_b;
 	int 		v;
 	int 		c;
-	int 		vb;
 }				t_struct;
 
 typedef struct	s_dupstruct
@@ -21,7 +21,6 @@ typedef struct	s_dupstruct
 	int			len_stac_b;
 	int 		c;
 	int			v;
-	int 		vb;
 	int			*stac_a;
 	int			*stac_b;
 	int 		*stac_one;
@@ -82,6 +81,7 @@ int 	ft_intchr(int num, int *stac, int len_stac);
 int 	*ft_sorted(int *num, int len);
 int 	*ft_intdup(int *num, int *num1, int len);
 void 	ft_clear_stacs(t_dupstruct *f, int count_stacs);
+int 	ft_check_max(char *str);
 
 int 	ft_check_command(char *cmd, t_dupstruct *f);
 void 	ft_read_command(t_struct *f);

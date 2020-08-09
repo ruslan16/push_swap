@@ -1,7 +1,19 @@
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac)
+void 	ft_clear_win(char *cmd, char stac)
+{
+	ft_putstr("\x1b[2J");
+	if (stac == 'a')
+		ft_printf("sa\n");
+	else if (stac == 'b')
+		ft_printf("sb\n");
+	else
+		ft_printf("%s\n", cmd);
+	ft_printf("STAC_A	STAC_B\n");
+}
+
+void 	ft_print_color(t_dupstruct *f, char *cmd, char stac)
 {
 	int i;
 	int j;
@@ -10,19 +22,41 @@ void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac)
 	j = 0;
 	ft_putstr("\x1b[2J");
 	if (stac == 'a')
-		ft_printf("sa\n");
+		ft_printf("\033[1;33msa\033[0m\n");
 	else if (stac == 'b')
-		ft_printf("sb\n");
+		ft_printf("\033[1;33sb\033[0m\n");
 	else
-		ft_printf("%s\n", cmd);
-	ft_printf("\n\n");
-	ft_printf("STAC_A	STAC_B\n\n");
+		ft_printf("\033[1;33m%s\033[0m\n", cmd);
+	ft_printf("\033[1;31mSTAC_A	STAC_B\033[0m\n");
 	while (i < f->len_stac_a || j < f->len_stac_b)
 	{
-		(i < f->len_stac_a) ? ft_printf("%d", f->stac_a[i]) : write(1, "", 0);
-		(j < f->len_stac_b) ? ft_printf("	%d\n", f->stac_b[j]) : write(2, "\n", 1);
+		(i < f->len_stac_a) ? ft_printf("\033[1;36m%d\033[0m", f->stac_a[i]) : write(1, "", 0);
+		(j < f->len_stac_b) ? ft_printf("	\033[1;36m%d\033[0m\n", f->stac_b[j]) : write(2, "\n", 1);
 		j++;
 		i++;
 	}
 	sleep(1);
+}
+
+void 	ft_print_stac(t_dupstruct *f, char *cmd, char stac)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (f->c == 1)
+	{
+		ft_print_color(f, cmd, stac);
+		return ;
+	}
+	ft_clear_win(cmd, stac);
+	while (i < f->len_stac_a || j < f->len_stac_b)
+	{
+		(i < f->len_stac_a) ? ft_printf("%d", f->stac_a[i]) : write(1, "", 0);
+		(j < f->len_stac_b) ? ft_printf("	%d\n", f->stac_b[j]) : write(2, "\n", 1);
+		i++;
+		j++;
+	}
+	usleep(650 * 1000);
 }

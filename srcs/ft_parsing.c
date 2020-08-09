@@ -1,3 +1,4 @@
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
@@ -6,23 +7,17 @@ int 	ft_check_bonus(char *str, t_struct *f)
 	if (str[0] == '-')
 	{
 		if (str[1] == 'v')
-		{
-			if (str[2] == 'b')
-				f->vb = 1;
-			else
-				f->v = 1;
-		}
+			f->v = 1;
 		else
 			return (0);
 	}
 	else
 		return (0);
-	if ((f->v == 1 && str[2] == 'c') || (f->vb == 1 && str[3] == 'c'))
+	if (f->v == 1 && str[2] == 'c')
 		f->c = 1;
-	else if ((f->v == 1 && str[2] != '\0') || (f->vb == 1 && str[3] != '\0'))
+	else if (f->v == 1 && str[2] != '\0')
 		return (0);
-	if ((f->c == 1 && f->v == 1 && str[3] != '\0') ||
-	(f->vb == 1 && f->c == 1 && str[4] != '\0'))
+	if (f->c == 1 && f->v == 1 && str[3] != '\0')
 		return (0);
 	return (1);
 }
@@ -61,6 +56,8 @@ int 	pars_two(char *str, t_struct *f, int i)
 			i++;
 		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
 			return (0);
+		if (!ft_check_max(&str[i]))
+			return(0);
 		f->stac_a[f->i] = ft_atoi(&str[i]);
 		f->i++;
 		f->len_stac_a++;
@@ -74,7 +71,7 @@ int 	pars_two(char *str, t_struct *f, int i)
 		while (ft_isdigit(str[i]))
 			i++;
 	}
-	return (1);
+	return(1);
 }
 
 int 	parsing(char *str[], t_struct *f, int button)
@@ -88,14 +85,14 @@ int 	parsing(char *str[], t_struct *f, int button)
 			i++;
 		if(!pars_two(str[i], f, 0))
 		{
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			return (0);
 		}
 		i++;
 	}
 	if (!if_not_double(f))
 	{
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	if (button == 0)

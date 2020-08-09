@@ -18,9 +18,9 @@ int		ft_check_sort(t_dupstruct *f)
 			if (ft_is_sorted(f->stac_a, f->len_stac_a) && j != - 1 && f->len_stac_b == 0)
 			{
 				ft_printf("OK\n");
-				return (0);
+				return (2);
 			}
-			return ((j == -1) ? -2 : 1);
+			return ((j == -1) ? -1 : 1);
 		}
 		cmd[i] = c;
 		i++;
@@ -38,17 +38,19 @@ void 	ft_read_command(t_struct *f)
 	if (!(d = (t_dupstruct*)malloc(sizeof(t_dupstruct))))
 		return ;
 	bezerostructdup(d, f);
-	while (res != 0)
+	while (res != 0 && res != 2)
 	{
 		res = ft_check_sort(d);
-		if (res == -1 || res == -2)
+		if (res == -1)
 		{
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			break;
 		}
 	}
-	if (!ft_is_sorted(d->stac_a, d->len_stac_a) && res != -2)
+	if ((!ft_is_sorted(d->stac_a, d->len_stac_a) && res != -1) || (f->len_stac_b != 0 && res != -1))
 		ft_printf("KO\n");
+	else if (ft_is_sorted(d->stac_a, d->len_stac_a) && res != 2 && res != -1 && d->len_stac_b == 0)
+		ft_printf("OK\n");
 	free(d->stac_a);
 	free(d->stac_b);
 	free(d);

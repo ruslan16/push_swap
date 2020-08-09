@@ -10,7 +10,8 @@ void	bezerostructdup(t_dupstruct *d, t_struct *f)
 	d->len_stac_b = f->len_stac_b;
 	d->v = f->v;
 	d->c = f->c;
-	d->vb = f->vb;
+	if (d->v == 1)
+		ft_print_stac(d, "", 'n');
 }
 
 void	bezerostruct(t_struct *f, int size_stac)
@@ -22,7 +23,6 @@ void	bezerostruct(t_struct *f, int size_stac)
 	f->len_stac_b = 0;
 	f->v = 0;
 	f->c = 0;
-	f->vb = 0;
 }
 
 int		main(int argc, char *argv[])
