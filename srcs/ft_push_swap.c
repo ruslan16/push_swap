@@ -43,6 +43,8 @@ int		main(int argc, char *argv[])
 	int			size_stac;
 
 	size_stac = ft_size_stac(argv, argc);
+	if (ft_strequ(argv[1], ""))
+		return (0);
 	if (!(f = (t_struct*)malloc(sizeof(t_struct))))
 		return (0);
 	bezerostruct(f, size_stac);

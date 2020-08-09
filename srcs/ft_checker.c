@@ -6,7 +6,7 @@
 /*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 20:10:19 by sirvin            #+#    #+#             */
-/*   Updated: 2020/08/09 20:12:37 by sirvin           ###   ########.fr       */
+/*   Updated: 2020/08/09 22:13:34 by sirvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		main(int argc, char *argv[])
 	int			size_stac;
 
 	size_stac = ft_size_stac(argv, argc);
+	if (ft_strequ(argv[1], ""))
+		return (0);
 	if (!(f = (t_struct*)malloc(sizeof(t_struct))))
 		return (0);
 	bezerostruct(f, size_stac);
