@@ -74,6 +74,8 @@ int		pars_two(char *str, t_struct *f, int i)
 		f->len_stac_a++;
 		if (str[i] == '+' || str[i] == '-')
 		{
+			if (i != 0 && str[i - 1] != ' ')
+				return (0);
 			if (ft_isdigit(str[i + 1]))
 				i++;
 			else
