@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlc_fun_two.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:10:03 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:12:37 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-int 	ft_size_stac(char *str[], int size)
+int		ft_size_stac(char *str[], int size)
 {
 	int count;
 	int i;
@@ -12,7 +24,7 @@ int 	ft_size_stac(char *str[], int size)
 	j = 0;
 	while (i < size)
 	{
-		while(str[i][j] != '\0')
+		while (str[i][j] != '\0')
 		{
 			while (ft_isspace(str[i][j]))
 				j++;
@@ -26,7 +38,7 @@ int 	ft_size_stac(char *str[], int size)
 	return (count);
 }
 
-void 	ft_clear_stacs(t_dupstruct *f, int count_stacs)
+void	ft_clear_stacs(t_dupstruct *f, int count_stacs)
 {
 	free(f->stac_one);
 	free(f->stac_two);
@@ -45,7 +57,7 @@ void 	ft_clear_stacs(t_dupstruct *f, int count_stacs)
 	free(f->sorted_stac);
 }
 
-int 	*ft_intdup(int *num, int *num1, int len)
+int		*ft_intdup(int *num, int *num1, int len)
 {
 	int i;
 
@@ -58,7 +70,7 @@ int 	*ft_intdup(int *num, int *num1, int len)
 	return (num);
 }
 
-int 	ft_intchr(int num, int *stac, int len_stac)
+int		ft_intchr(int num, int *stac, int len_stac)
 {
 	int i;
 
@@ -74,7 +86,7 @@ int 	ft_intchr(int num, int *stac, int len_stac)
 	return (0);
 }
 
-int 	*ft_sorted(int *num, int len)
+int		*ft_sorted(int *num, int len)
 {
 	int i;
 	int *stac;

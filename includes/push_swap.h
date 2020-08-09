@@ -60,7 +60,7 @@ void 	ft_sort_four(t_dupstruct *f);
 void 	ft_sort_five(t_dupstruct *f);
 void 	ft_sort_five_d(t_dupstruct *f);
 void 	ft_sort_onehundred(t_dupstruct *f);
-void 	work_with_onestac(t_dupstruct *f, int count_stacs, int j, int size_stacs);
+void 	work_with_one(t_dupstruct *f, int count_stacs, int j, int size_stacs);
 void 	work_with_sixstac(t_dupstruct *f, int i, int j, int size_stacs);
 void 	work_with_elevenstac(t_dupstruct *f, int i, int j, int size_stacs);
 void 	find_element(t_dupstruct *f, int i, int j);

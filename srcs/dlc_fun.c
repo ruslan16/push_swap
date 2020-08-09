@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlc_fun.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:09:57 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:10:52 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
@@ -33,7 +45,7 @@ int		ft_lowelement(int *num, int len)
 	return (min);
 }
 
-int 	ft_index_lowel(int *num, int len)
+int		ft_index_lowel(int *num, int len)
 {
 	int i;
 	int min;
@@ -54,7 +66,7 @@ int 	ft_index_lowel(int *num, int len)
 	return (index);
 }
 
-int 	ft_index_highel(int *num, int len)
+int		ft_index_highel(int *num, int len)
 {
 	int i;
 	int max;
@@ -75,7 +87,7 @@ int 	ft_index_highel(int *num, int len)
 	return (index);
 }
 
-int 	ft_is_sorted(int *num, int len)
+int		ft_is_sorted(int *num, int len)
 {
 	int i;
 	int *dupstac;

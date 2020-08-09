@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rules_two.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:10:48 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:12:37 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
@@ -88,4 +100,3 @@ void	ft_rotate_b(t_dupstruct *f, int button)
 	}
 	(f->v == 1) ? ft_print_stac(f, "rb", 'n') : ft_printf("");
 }
-

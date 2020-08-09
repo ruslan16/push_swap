@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:11:08 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:12:37 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
 void	ft_sort_two(t_dupstruct *f)
 {
 	if (f->stac_a[0] > f->stac_a[1])
-		ft_swapab(f, 'a' ,0);
+		ft_swapab(f, 'a', 0);
 }
 
-void 	ft_sort_three_d(int *stac, t_dupstruct *f, char name_stac)
+void	ft_sort_three_d(int *stac, t_dupstruct *f, char name_stac)
 {
 	if (stac[0] == ft_lowelement(stac, 3) &&
 		stac[1] == ft_highelement(stac, 3))
@@ -28,7 +40,7 @@ void 	ft_sort_three_d(int *stac, t_dupstruct *f, char name_stac)
 	}
 }
 
-void 	ft_sort_three(int *stac, t_dupstruct *f, char name_stac)
+void	ft_sort_three(int *stac, t_dupstruct *f, char name_stac)
 {
 	if (stac[2] == ft_highelement(stac, 3) &&
 		stac[1] == ft_lowelement(stac, 3))

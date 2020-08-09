@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:10:28 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:12:37 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-int 	ft_check_bonus(char *str, t_struct *f)
+int		ft_check_bonus(char *str, t_struct *f)
 {
 	if (str[0] == '-')
 	{
@@ -22,7 +33,7 @@ int 	ft_check_bonus(char *str, t_struct *f)
 	return (1);
 }
 
-int 	if_not_double(t_struct *f)
+int		if_not_double(t_struct *f)
 {
 	int i;
 	int j;
@@ -48,7 +59,7 @@ int 	if_not_double(t_struct *f)
 	return (1);
 }
 
-int 	pars_two(char *str, t_struct *f, int i)
+int		pars_two(char *str, t_struct *f, int i)
 {
 	while (str[i] != '\0')
 	{
@@ -57,7 +68,7 @@ int 	pars_two(char *str, t_struct *f, int i)
 		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
 			return (0);
 		if (!ft_check_max(&str[i]))
-			return(0);
+			return (0);
 		f->stac_a[f->i] = ft_atoi(&str[i]);
 		f->i++;
 		f->len_stac_a++;
@@ -71,10 +82,10 @@ int 	pars_two(char *str, t_struct *f, int i)
 		while (ft_isdigit(str[i]))
 			i++;
 	}
-	return(1);
+	return (1);
 }
 
-int 	parsing(char *str[], t_struct *f, int button)
+int		parsing(char *str[], t_struct *f, int button)
 {
 	int i;
 
@@ -83,7 +94,7 @@ int 	parsing(char *str[], t_struct *f, int button)
 	{
 		if (i == 1 && ft_check_bonus(str[1], f))
 			i++;
-		if(!pars_two(str[i], f, 0))
+		if (!pars_two(str[i], f, 0))
 		{
 			ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
 			return (0);

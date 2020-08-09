@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_forchecker.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:09:50 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:51:19 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
 int		ft_check_sort(t_dupstruct *f)
 {
-	char cmd[4];
-	char c;
-	int i;
-	int j;
+	char	cmd[4];
+	char	c;
+	int		i;
+	int		j;
 
 	ft_bzero(cmd, sizeof(char) * 4);
 	i = 0;
@@ -15,7 +27,8 @@ int		ft_check_sort(t_dupstruct *f)
 		if (c == '\n')
 		{
 			j = ft_check_command(cmd, f);
-			if (ft_is_sorted(f->stac_a, f->len_stac_a) && j != - 1 && f->len_stac_b == 0)
+			if (ft_is_sorted(f->stac_a, f->len_stac_a)
+			&& j != -1 && f->len_stac_b == 0)
 			{
 				ft_printf("\033[1;32mOK\033[0m\n");
 				return (2);
@@ -29,10 +42,10 @@ int		ft_check_sort(t_dupstruct *f)
 	return (0);
 }
 
-void 	ft_read_command(t_struct *f)
+void	ft_read_command(t_struct *f)
 {
-	int res;
-	t_dupstruct *d;
+	int			res;
+	t_dupstruct	*d;
 
 	res = 5;
 	if (!(d = (t_dupstruct*)malloc(sizeof(t_dupstruct))))
@@ -44,19 +57,21 @@ void 	ft_read_command(t_struct *f)
 		if (res == -1)
 		{
 			ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
-			break;
+			break ;
 		}
 	}
-	if ((!ft_is_sorted(d->stac_a, d->len_stac_a) && res != -1) || (d->len_stac_b != 0 && res != -1))
+	if ((!ft_is_sorted(d->stac_a, d->len_stac_a) && res != -1)
+	|| (d->len_stac_b != 0 && res != -1))
 		ft_printf("\033[1;31mKO\033[0m\n");
-	else if (ft_is_sorted(d->stac_a, d->len_stac_a) && res != 2 && res != -1 && d->len_stac_b == 0)
+	else if (ft_is_sorted(d->stac_a, d->len_stac_a)
+	&& res != 2 && res != -1 && d->len_stac_b == 0)
 		ft_printf("\033[1;32mOK\033[0m\n");
 	free(d->stac_a);
 	free(d->stac_b);
 	free(d);
 }
 
-int 	ft_check_command_d(char *cmd, t_dupstruct *f)
+int		ft_check_command_d(char *cmd, t_dupstruct *f)
 {
 	if (ft_strequ(cmd, "rrr") == 1)
 		ft_reverse_rotate_ab(f, 1);
@@ -71,7 +86,7 @@ int 	ft_check_command_d(char *cmd, t_dupstruct *f)
 	return (1);
 }
 
-int 	ft_check_command(char *cmd, t_dupstruct *f)
+int		ft_check_command(char *cmd, t_dupstruct *f)
 {
 	if (ft_strequ(cmd, "sa") == 1)
 		ft_swapab(f, 'a', 1);

@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_max.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:09:29 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:09:29 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-int 	ft_check_max_d(char *str, int count, int znak)
+int		ft_check_max_d(char *str, int count, int znak)
 {
 	while (str[count] != '\0' && str[count] != ' ')
 		count++;
 	if (count == 10)
 	{
-		if ((znak == 1 || znak == 0) && ft_strncmp("2147483647", str, count) < 0)
+		if ((znak == 1 || znak == 0) &&
+		ft_strncmp("2147483647", str, count) < 0)
 			return (0);
 		if (znak == -1 && ft_strncmp("2147483648", str, count) < 0)
 			return (0);
@@ -17,10 +30,10 @@ int 	ft_check_max_d(char *str, int count, int znak)
 	return (1);
 }
 
-int 	ft_check_max(char *str)
+int		ft_check_max(char *str)
 {
 	int i;
-	int znak;;
+	int znak;
 
 	znak = 0;
 	i = 0;

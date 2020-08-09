@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_stac.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:10:14 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:12:37 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-void 	ft_fill_stac_f(t_dupstruct *f, int i, int j, int count_stac)
+void	ft_fill_stac_f(t_dupstruct *f, int i, int j, int count_stac)
 {
 	while (j++ < (f->len_stac_a / count_stac))
 	{
@@ -16,7 +28,7 @@ void 	ft_fill_stac_f(t_dupstruct *f, int i, int j, int count_stac)
 	}
 }
 
-void 	ft_fill_stac_t(t_dupstruct *f, int i, int j, int count_stac)
+void	ft_fill_stac_t(t_dupstruct *f, int i, int j, int count_stac)
 {
 	while (j++ < (f->len_stac_a / count_stac))
 	{
@@ -39,7 +51,7 @@ void 	ft_fill_stac_t(t_dupstruct *f, int i, int j, int count_stac)
 	ft_fill_stac_f(f, i, j, count_stac);
 }
 
-void 	ft_fill_stac_d(t_dupstruct *f, int i, int j, int count_stac)
+void	ft_fill_stac_d(t_dupstruct *f, int i, int j, int count_stac)
 {
 	if (f->len_stac_a <= 100)
 	{
@@ -67,7 +79,7 @@ void 	ft_fill_stac_d(t_dupstruct *f, int i, int j, int count_stac)
 	ft_fill_stac_t(f, i, -1, count_stac);
 }
 
-void 	ft_fill_stac(t_dupstruct *f, int i, int j, int count_stac)
+void	ft_fill_stac(t_dupstruct *f, int i, int j, int count_stac)
 {
 	while (j++ < (f->len_stac_a / count_stac))
 	{
@@ -77,7 +89,7 @@ void 	ft_fill_stac(t_dupstruct *f, int i, int j, int count_stac)
 	j = -1;
 	while (j++ < (f->len_stac_a / count_stac))
 	{
-		f->stac_three[j] = f->sorted_stac[i -1];
+		f->stac_three[j] = f->sorted_stac[i - 1];
 		i++;
 	}
 	j = -1;

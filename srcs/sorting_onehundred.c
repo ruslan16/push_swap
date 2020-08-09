@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_onehundred.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:12:08 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:51:20 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-void 	ft_push_to_a(t_dupstruct *f, int index_max)
+void	ft_push_to_a(t_dupstruct *f, int index_max)
 {
 	while (f->len_stac_b != 0)
 	{
@@ -26,7 +38,7 @@ void 	ft_push_to_a(t_dupstruct *f, int index_max)
 	}
 }
 
-void 	find_element(t_dupstruct *f, int i, int j)
+void	find_element(t_dupstruct *f, int i, int j)
 {
 	if (i < j)
 	{
@@ -52,7 +64,7 @@ void 	find_element(t_dupstruct *f, int i, int j)
 	ft_push_b(f, 0);
 }
 
-void 	ft_sort_onehundred(t_dupstruct *f)
+void	ft_sort_onehundred(t_dupstruct *f)
 {
 	int i;
 
@@ -65,8 +77,8 @@ void 	ft_sort_onehundred(t_dupstruct *f)
 	f->stac_five = ft_memalloc(f->len_stac_a - (f->len_stac_a / 5) * 4);
 	while (i++ < (f->len_stac_a / 5))
 		f->stac_one[i] = f->sorted_stac[i];
-	ft_fill_stac(f, i -1, -1, 5);
-	work_with_onestac(f, 5, 0, f->len_stac_a / 5);
+	ft_fill_stac(f, i - 1, -1, 5);
+	work_with_one(f, 5, 0, f->len_stac_a / 5);
 	ft_push_to_a(f, 0);
 	ft_clear_stacs(f, 5);
 }

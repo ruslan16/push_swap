@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_checker.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:10:19 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:12:37 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
@@ -25,10 +37,10 @@ void	bezerostruct(t_struct *f, int size_stac)
 	f->len_stac_b = 0;
 }
 
-int 	main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
-	t_struct *f;
-	int size_stac;
+	t_struct	*f;
+	int			size_stac;
 
 	size_stac = ft_size_stac(argv, argc);
 	if (!(f = (t_struct*)malloc(sizeof(t_struct))))
@@ -39,5 +51,5 @@ int 	main(int argc, char *argv[])
 	free(f->stac_a);
 	free(f->stac_b);
 	free(f);
-	return(0);
+	return (0);
 }

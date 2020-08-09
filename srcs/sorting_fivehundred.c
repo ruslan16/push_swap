@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_fivehundred.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/09 20:12:03 by sirvin            #+#    #+#             */
+/*   Updated: 2020/08/09 20:51:20 by sirvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
 
-void 	work_with_elevenstac(t_dupstruct *f, int i, int j, int size_stacs)
+void	work_with_elevenstac(t_dupstruct *f, int i, int j, int size_stacs)
 {
 	int count;
 
@@ -13,20 +25,20 @@ void 	work_with_elevenstac(t_dupstruct *f, int i, int j, int size_stacs)
 		while (i < (f->len_stac_a / 2))
 		{
 			if (ft_intchr(f->stac_a[i], f->stac_eleven, f->len_stac_a))
-				break;
+				break ;
 			i++;
 		}
 		while (j >= (f->len_stac_a / 2))
 		{
 			if (ft_intchr(f->stac_a[j], f->stac_eleven, f->len_stac_a))
-				break;
+				break ;
 			j--;
 		}
 		find_element(f, i, f->len_stac_a - j);
 	}
 }
 
-void 	ft_create_stacs(t_dupstruct *f, int size_stacs)
+void	ft_create_stacs(t_dupstruct *f, int size_stacs)
 {
 	int i;
 
@@ -47,11 +59,11 @@ void 	ft_create_stacs(t_dupstruct *f, int size_stacs)
 	ft_fill_stac(f, i, -1, 11);
 }
 
-void 	ft_sort_fivehundred(t_dupstruct *f)
+void	ft_sort_fivehundred(t_dupstruct *f)
 {
 	f->sorted_stac = ft_sorted(f->stac_a, f->len_stac_a);
 	ft_create_stacs(f, f->len_stac_a / 11);
-	work_with_onestac(f, 11, 0, f->len_stac_a / 11);
+	work_with_one(f, 11, 0, f->len_stac_a / 11);
 	ft_push_to_a(f, 0);
 	ft_clear_stacs(f, 11);
 }
