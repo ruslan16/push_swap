@@ -98,14 +98,14 @@ int		parsing(char *str[], t_struct *f, int button)
 			i++;
 		if (!pars_two(str[i], f, 0))
 		{
-			ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
+			write(2, "\033[1;31mError\033[0m\n", 17);
 			return (0);
 		}
 		i++;
 	}
 	if (!if_not_double(f))
 	{
-		ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
+		write(2, "\033[1;31mError\033[0m\n", 17);
 		return (0);
 	}
 	if (button == 0)

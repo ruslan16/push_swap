@@ -34,7 +34,7 @@ void	color_high_stac(t_dupstruct *f, char *cmd, char stac, int i)
 	if (stac == 'a')
 		ft_printf("\033[1;33msa\033[0m\n\n");
 	else if (stac == 'b')
-		ft_printf("\033[1;33sb\033[0m\n\n");
+		ft_printf("\033[1;33msb\033[0m\n\n");
 	else
 		ft_printf("\033[1;33m%s\033[0m\n\n", cmd);
 	ft_printf("\033[1;35mSTAC_A :\033[0m\n");

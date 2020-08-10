@@ -6,12 +6,22 @@
 /*   By: sirvin <sirvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 20:09:50 by sirvin            #+#    #+#             */
-/*   Updated: 2020/08/09 20:51:19 by sirvin           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:06:44 by sirvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/ft_printf.h"
 #include "../includes/push_swap.h"
+
+int		post_read(void)
+{
+	char c;
+
+	c = '0';
+	while (c != '\n')
+		read(0, &c, 1);
+	return (-1);
+}
 
 int		ft_check_sort(t_dupstruct *f)
 {
@@ -31,6 +41,8 @@ int		ft_check_sort(t_dupstruct *f)
 		}
 		cmd[i] = c;
 		i++;
+		if (i > 3)
+			return (post_read());
 		cmd[i] = '\0';
 	}
 	return (0);
@@ -50,7 +62,7 @@ void	ft_read_command(t_struct *f)
 		res = ft_check_sort(d);
 		if (res == -1)
 		{
-			ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
+			write(2, "\033[1;31mError\033[0m\n", 17);
 			break ;
 		}
 	}
@@ -73,8 +85,6 @@ int		ft_check_command_d(char *cmd, t_dupstruct *f)
 		ft_push_b(f, 1);
 	else if (ft_strequ(cmd, "pa") == 1)
 		ft_push_a(f, 1);
-	else if (ft_strequ(cmd, ""))
-		return (1);
 	else
 		return (-1);
 	return (1);

@@ -36,7 +36,7 @@ void	ft_print_color(t_dupstruct *f, char *cmd, char stac)
 	if (stac == 'a')
 		ft_printf("\033[1;33msa\033[0m\n");
 	else if (stac == 'b')
-		ft_printf("\033[1;33sb\033[0m\n");
+		ft_printf("\033[1;33msb\033[0m\n");
 	else
 		ft_printf("\033[1;33m%s\033[0m\n", cmd);
 	ft_printf("\033[1;35mSTAC_A	STAC_B\033[0m\n");
